@@ -1,90 +1,83 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const Timetable = ({ baskets }) => {
-  const [selectedBasket, setSelectedBasket] = useState(null);
-  const [selectedTime, setSelectedTime] = useState('');
-  const [timetableData, setTimetableData] = useState([]);
+const Timetable = () => {
+  let displayElective = false;
+  const basket1 = [
+    { label: 'Apple' },
+    { label: 'Mango' },
+    { label: 'Grapes' },
+  ];
+  const basket2 = [
+    { value: 'basket1', label: 'Peach' },
+    { value: 'basket2', label: 'Guava' },
+    { value: 'basket3', label: 'Pomegranate' },
+  ];
+  const basket3 = [
+    { value: 'basket1', label: 'Onion' },
+    { value: 'basket2', label: 'Tomato' },
+    { value: 'basket3', label: 'Potato' },
+  ];
 
-  const handleBasketChange = (selectedOption) => {
-    setSelectedBasket(selectedOption);
-    setSelectedTime(''); // Clear selected time when basket changes
-    setTimetableData([]); // Clear timetable data
+  const [selectedElectives, setSelectedElectives] = useState({
+    basket1: null,
+    basket2: null,
+    basket3: null,
+  });
+
+  const handleBasket1Change = (selectedElective) => {
+    setSelectedElectives((prevElective) => ({
+      ...prevElective,
+      basket1: selectedElective,
+    }));
   };
 
-  const handleTimeChange = (selectedOption) => {
-    setSelectedTime(selectedOption.value);
-    generateTimetableData(selectedOption.value);
+  const handleBasket2Change = (selectedElective) => {
+    setSelectedElectives((prevElective) => ({
+      ...prevElective,
+      basket2: selectedElective,
+    }));
   };
 
-  const generateTimetableData = (selectedTime) => {
-    // Filter courses based on selectedBasket and selectedTime
-    const courses = selectedBasket.courses.filter(
-      (course) => course.time === selectedTime
-    );
-
-    // Create the timetable data
-    const timetable = [];
-    for (let i = 0; i < courses.length; i++) {
-      const course = courses[i];
-      timetable.push({
-        time: course.time,
-        day: course.day,
-        courseName: course.name,
-        // Add more properties as needed
-      });
-    }
-
-    setTimetableData(timetable);
+  const handleBasket3Change = (selectedElective) => {
+    setSelectedElectives((prevElective) => ({
+      ...prevElective,
+      basket3: selectedElective,
+    }));
   };
+
+  const showElectives = () => {
+    console.log("selected electives are: ", );
+  }
 
   return (
     <div>
       <h1>Timetable</h1>
       <Select
-        options={baskets}
-        onChange={handleBasketChange}
-        value={selectedBasket}
-        placeholder="Select a basket"
+        options={basket1}
+        onChange={handleBasket1Change}
+        value={selectedElectives.basket1}
+        placeholder="Select basket 1 elective"
       />
-      {/* Display courses based on the selected basket */}
-      {selectedBasket && (
-        <>
-          <Select
-            options={[
-              { value: 'morning', label: 'Morning' },
-              { value: 'afternoon', label: 'Afternoon' },
-              { value: 'evening', label: 'Evening' },
-            ]}
-            onChange={handleTimeChange}
-            value={selectedTime}
-            placeholder="Select a time"
-          />
-          {/* Display the timetable in a tabular format */}
-          {timetableData.length > 0 && (
-            <table>
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>Day</th>
-                  <th>Course Name</th>
-                  {/* Add more table headers as needed */}
-                </tr>
-              </thead>
-              <tbody>
-                {timetableData.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.time}</td>
-                    <td>{item.day}</td>
-                    <td>{item.courseName}</td>
-                    {/* Add more table data cells as needed */}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </>
-      )}
+      <Select
+        options={basket2}
+        onChange={handleBasket2Change}
+        value={selectedElectives.basket2}
+        placeholder="Select basket 2 elective"
+      />
+      <Select
+        options={basket3}
+        onChange={handleBasket3Change}
+        value={selectedElectives.basket3}
+        placeholder="Select basket 3 elective"
+      />
+      <button onClick={showElectives}>Proceed</button>
+      <div>
+        <h3>Selected Electives:</h3>
+        <p>Basket 1: {selectedElectives.basket1 ? selectedElectives.basket1.label : 'Not selected'}</p>
+        <p>Basket 1: {selectedElectives.basket2 ? selectedElectives.basket2.label : 'Not selected'}</p>
+        <p>Basket 1: {selectedElectives.basket3 ? selectedElectives.basket3.label : 'Not selected'}</p>
+      </div>
     </div>
   );
 };
