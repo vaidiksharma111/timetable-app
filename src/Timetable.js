@@ -6,6 +6,7 @@ import {
   dropdownOptions3,
 } from './BasketData';
 import courses from './BasketData';
+import ShowTimetable from './Showtt';
 
 const Timetable = () => {
   const [selectedElectives, setSelectedElectives] = useState([]);
@@ -46,6 +47,9 @@ const Timetable = () => {
     let id3 = elective.basket3.value;
     const selected = [courses[id1], courses[id2],courses[id3]];
     setSelectedElectives(selected);
+  const showElectives = () => {
+    ShowTimetable();
+    console.log("selected electives are: ", );
   }
 
   return (
