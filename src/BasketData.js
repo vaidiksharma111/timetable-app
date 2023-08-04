@@ -3,8 +3,10 @@ const basket = {
     courses: [
       {
         id: 1,
-        name: 'Introduction to React',
-        time: 'morning',
+        name: 'Time Series Data Analytics',
+        abbr: 'TSDA',
+        class: 'L',
+        room: 5207,
         day: 'Monday',
         // Add more properties as needed
       },
