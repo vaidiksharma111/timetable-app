@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Basket from './Basket';
 import Timetable from './Timetable';
+import ShowTimetable from './Showtt';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
           <Route path="/" element={<Basket />} />
           <Route path="/timetable" element={<Timetable />} />
+          <Route path="/tt" element={<ShowTimetable />} />
           {/* Add more routes here if needed */}
           {/* For example:
             <Route path="/about" element={<About />} />

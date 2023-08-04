@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import ShowTimetable from './Showtt';
 
 const Timetable = () => {
   let displayElective = false;
@@ -47,6 +48,7 @@ const Timetable = () => {
   };
 
   const showElectives = () => {
+    ShowTimetable();
     console.log("selected electives are: ", );
   }
 
