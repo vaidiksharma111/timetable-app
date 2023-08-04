@@ -1,52 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import { 
+  dropdownOptions1, 
+  dropdownOptions2,
+  dropdownOptions3,
+} from './BasketData';
+import courses from './BasketData';
 import ShowTimetable from './Showtt';
 
 const Timetable = () => {
-  let displayElective = false;
-  const basket1 = [
-    { label: 'Apple' },
-    { label: 'Mango' },
-    { label: 'Grapes' },
-  ];
-  const basket2 = [
-    { value: 'basket1', label: 'Peach' },
-    { value: 'basket2', label: 'Guava' },
-    { value: 'basket3', label: 'Pomegranate' },
-  ];
-  const basket3 = [
-    { value: 'basket1', label: 'Onion' },
-    { value: 'basket2', label: 'Tomato' },
-    { value: 'basket3', label: 'Potato' },
-  ];
-
-  const [selectedElectives, setSelectedElectives] = useState({
+  const [selectedElectives, setSelectedElectives] = useState([]);
+  const [elective, setElective] = useState({
     basket1: null,
     basket2: null,
     basket3: null,
   });
 
+  useEffect(() => {
+    console.log(selectedElectives);
+  },[selectedElectives])
+
   const handleBasket1Change = (selectedElective) => {
-    setSelectedElectives((prevElective) => ({
+    setElective((prevElective) => ({
       ...prevElective,
       basket1: selectedElective,
     }));
   };
 
   const handleBasket2Change = (selectedElective) => {
-    setSelectedElectives((prevElective) => ({
+    setElective((prevElective) => ({
       ...prevElective,
       basket2: selectedElective,
     }));
   };
 
   const handleBasket3Change = (selectedElective) => {
-    setSelectedElectives((prevElective) => ({
+    setElective((prevElective) => ({
       ...prevElective,
       basket3: selectedElective,
     }));
   };
 
+  const submitElectives = () => {
+    let id1 = elective.basket1.value;
+    let id2 = elective.basket2.value;
+    let id3 = elective.basket3.value;
+    const selected = [courses[id1], courses[id2],courses[id3]];
+    setSelectedElectives(selected);
   const showElectives = () => {
     ShowTimetable();
     console.log("selected electives are: ", );
@@ -56,30 +56,24 @@ const Timetable = () => {
     <div>
       <h1>Timetable</h1>
       <Select
-        options={basket1}
+        options={dropdownOptions1}
         onChange={handleBasket1Change}
-        value={selectedElectives.basket1}
+        value={elective.basket1}
         placeholder="Select basket 1 elective"
       />
       <Select
-        options={basket2}
+        options={dropdownOptions2}
         onChange={handleBasket2Change}
-        value={selectedElectives.basket2}
-        placeholder="Select basket 2 elective"
+        value={elective.basket2}
+        placeholder="Select basket 1 elective"
       />
       <Select
-        options={basket3}
+        options={dropdownOptions3}
         onChange={handleBasket3Change}
-        value={selectedElectives.basket3}
-        placeholder="Select basket 3 elective"
+        value={elective.basket3}
+        placeholder="Select basket 1 elective"
       />
-      <button onClick={showElectives}>Proceed</button>
-      <div>
-        <h3>Selected Electives:</h3>
-        <p>Basket 1: {selectedElectives.basket1 ? selectedElectives.basket1.label : 'Not selected'}</p>
-        <p>Basket 1: {selectedElectives.basket2 ? selectedElectives.basket2.label : 'Not selected'}</p>
-        <p>Basket 1: {selectedElectives.basket3 ? selectedElectives.basket3.label : 'Not selected'}</p>
-      </div>
+      <button onClick={submitElectives}>SUBMIT</button>
     </div>
   );
 };
