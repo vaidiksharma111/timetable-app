@@ -4,40 +4,69 @@ const courses = [
     basket: 1,
     name: 'Time Series Data Analytics',
     abbr: 'TSDA',
-    class: 'L',
-    room: 5207,
-    day: 'Monday',
-    slot: '2',
+    type: {
+        L:{
+            Day: "Monday",
+            slot: 1,
+            Room: "5204",
+        },
+        T:{
+            Day: "Tuesday",
+            slot: 3,
+            Room: "5204",
+        },
+        P:{
+            Day: "Friday",
+            slot: 2,
+            Room: "5204",
+        }
+    }
   },
   {
     id: 1,
     basket: 2,
-    name: 'Parallel and Distributed Computing',
-    abbr: 'PDC',
-    class: 'T',
-    room: 5206,
-    day: 'Wednesday',
-    slot: '3',
+    name: 'Time Series Data Analytics',
+    abbr: 'TSDA',
+    type: {
+        L:{
+            Day: "Monday",
+            slot: 1,
+            Room: "5204",
+        },
+        T:{
+            Day: "Tuesday",
+            slot: 3,
+            Room: "5204",
+        },
+        P:{
+            Day: "Friday",
+            slot: 2,
+            Room: "5204",
+        }
+    }
   },
   {
     id: 2,
     basket: 3,
-    name: 'Big Data Analytics',
-    abbr: 'BDA',
-    class: 'P',
-    room: 5204,
-    day: 'Tuesday',
-    slot: '4',
-  },
-  {
-    id: 3,
-    basket: 3,
-    name: 'Machine Learning',
-    abbr: 'ML',
-    class: 'L',
-    room: 5203,
-    day: 'Friday',
-    slot: '3',
+    name: 'Time Series Data Analytics',
+    abbr: 'TSDA',
+    type: {
+        L:{
+            Day: "Monday",
+            slot: 1,
+            Room: "5204",
+        },
+        T:{
+            Day: "Tuesday",
+            slot: 3,
+            Room: "5204",
+        },
+        P:{
+            Day: "Friday",
+            slot: 2,
+            Room: "5204",
+        }
+    }
   },
 ];
 

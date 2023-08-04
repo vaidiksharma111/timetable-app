@@ -13,11 +13,7 @@ const App = () => {
           <Route path="/" element={<Basket />} />
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/tt" element={<ShowTimetable />} />
-          {/* Add more routes here if needed */}
-          {/* For example:
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          */}
+          <Route path="/tt/:selectedElectives" element={<ShowTimetable />} />
         </Routes>
     </div>
   </Router>

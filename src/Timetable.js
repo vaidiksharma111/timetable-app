@@ -7,8 +7,10 @@ import {
 } from './BasketData';
 import courses from './BasketData';
 import ShowTimetable from './Showtt';
+import { useNavigate } from 'react-router-dom';
 
 const Timetable = () => {
+    const navigate = useNavigate();
   const [selectedElectives, setSelectedElectives] = useState([]);
   const [elective, setElective] = useState({
     basket1: null,
@@ -18,7 +20,7 @@ const Timetable = () => {
 
   useEffect(() => {
     console.log(selectedElectives);
-  },[selectedElectives])
+  }, [selectedElectives]);
 
   const handleBasket1Change = (selectedElective) => {
     setElective((prevElective) => ({
@@ -45,12 +47,15 @@ const Timetable = () => {
     let id1 = elective.basket1.value;
     let id2 = elective.basket2.value;
     let id3 = elective.basket3.value;
-    const selected = [courses[id1], courses[id2],courses[id3]];
+    const selected = [courses[id1], courses[id2], courses[id3]];
     setSelectedElectives(selected);
-  const showElectives = () => {
-    ShowTimetable();
-    console.log("selected electives are: ", );
-  }
+    // console.log(selected);
+    while(!selected) {
+
+    }
+    navigate('/tt/' + encodeURIComponent(JSON.stringify(selected)));
+  };
+
 
   return (
     <div>
@@ -65,13 +70,13 @@ const Timetable = () => {
         options={dropdownOptions2}
         onChange={handleBasket2Change}
         value={elective.basket2}
-        placeholder="Select basket 1 elective"
+        placeholder="Select basket 2 elective"
       />
       <Select
         options={dropdownOptions3}
         onChange={handleBasket3Change}
         value={elective.basket3}
-        placeholder="Select basket 1 elective"
+        placeholder="Select basket 3 elective"
       />
       <button onClick={submitElectives}>SUBMIT</button>
     </div>
