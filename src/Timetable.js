@@ -8,9 +8,10 @@ import {
 import courses from './BasketData';
 import ShowTimetable from './Showtt';
 import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 const Timetable = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [selectedElectives, setSelectedElectives] = useState([]);
   const [elective, setElective] = useState({
     basket1: null,
@@ -59,19 +60,21 @@ const Timetable = () => {
 
   return (
     <div>
-      <h1>Timetable</h1>
+      <h1 className='title'>Timetable</h1>
       <Select
         options={dropdownOptions1}
         onChange={handleBasket1Change}
         value={elective.basket1}
         placeholder="Select basket 1 elective"
       />
+      <br/>
       <Select
         options={dropdownOptions2}
         onChange={handleBasket2Change}
         value={elective.basket2}
         placeholder="Select basket 2 elective"
       />
+      <br/>
       <Select
         options={dropdownOptions3}
         onChange={handleBasket3Change}
