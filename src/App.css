@@ -6,7 +6,7 @@ body,* {
 }
 
 :root {
-  --colorOne: black;
+  --colorOne: #275f9e;
 }  
 
 .timetable-container {

@@ -11,7 +11,6 @@ import "./App.css";
 
 const Timetable = () => {
     const navigate = useNavigate();
-    const [selectedElectives, setSelectedElectives] = useState([]);
     const [elective, setElective] = useState({
         basket1: null,
         basket2: null,
@@ -40,14 +39,19 @@ const Timetable = () => {
     };
 
     const submitElectives = () => {
+        if (!elective.basket1 || !elective.basket2 || !elective.basket3) {
+          alert("Please select all three electives");
+          return;
+        }
+      
         let id1 = elective.basket1.value;
         let id2 = elective.basket2.value;
         let id3 = elective.basket3.value;
         const selected = [courses[id1], courses[id2], courses[id3]];
-        setSelectedElectives(selected);
         while (!selected) {}
+      
         navigate("/tt/" + encodeURIComponent(JSON.stringify(selected)));
-    };
+      };
 
     return (
         <div className="timetable-container">
