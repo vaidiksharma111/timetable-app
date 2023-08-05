@@ -2,9 +2,10 @@ import React from 'react';
 import courses from './BasketData';
 import { useParams } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
+import './App.css';
 
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-const timeSlots = ['9:00 AM - 11:00 AM', '11:00 AM - 1:00 PM', '3:00 PM - 5:00 PM', '5:00 PM - 7:00 PM'];
+const timeSlots = ['9:00 - 11:00', '11:00 - 1:00', '3:00 - 5:00', '5:00 - 7:00'];
 
 const ShowTimetable = () => {
   const params = useParams();
@@ -29,7 +30,7 @@ const ShowTimetable = () => {
       <table className="timetable">
         <thead>
           <tr>
-            <th>day/Time</th>
+            <th>Day/Time</th>
             {timeSlots.map((slot) => (
               <th key={slot}>{slot}</th>
             ))}
