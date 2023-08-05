@@ -4,7 +4,7 @@ body {
 }
 
 :root {
-  --colorTwo: #768bbf;
+  --colorTwo: #3a5f86;
 }
 
 #pdfContent {
@@ -37,7 +37,7 @@ body {
 }
 
 .timetable tbody tr:nth-child(even) {
-  background-color: #dee5ff; 
+  background-color: #c8dcf3; 
 }
 
 /* Adjust font size for smaller screens */
