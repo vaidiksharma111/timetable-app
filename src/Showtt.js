@@ -5,7 +5,7 @@ import html2pdf from 'html2pdf.js';
 import './App.css';
 
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-const timeSlots = ['9:00 - 11:00', '11:00 - 1:00', '3:00 - 5:00', '5:00 - 7:00'];
+const timeSlots = ['9:00 - 11:00', '11:00 - 1:00','1:00 - 2:00', '3:00 - 5:00', '5:00 - 7:00'];
 
 const ShowTimetable = () => {
   const params = useParams();
