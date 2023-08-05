@@ -2,7 +2,7 @@ import React from 'react';
 import courses from './BasketData';
 import { useParams } from 'react-router-dom';
 import html2pdf from 'html2pdf.js';
-import './App.css';
+import './Timetable.css';
 
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 const timeSlots = ['9:00 - 11:00', '11:00 - 1:00','1:00 - 2:00', '3:00 - 5:00', '5:00 - 7:00'];
@@ -26,7 +26,7 @@ const ShowTimetable = () => {
   return (
     <>
     <div id='pdfContent'>
-      <h2 className='title1'>Time-Table B.Tech 7th Sem</h2>
+      <h2 className='title1'>Time-Table</h2>
       <table className="timetable">
         <thead>
           <tr>

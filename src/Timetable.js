@@ -7,7 +7,7 @@ import {
 } from "./BasketData";
 import courses from "./BasketData";
 import { useNavigate } from "react-router-dom";
-import "./Timetable.css";
+import "./App.css";
 
 const Timetable = () => {
     const navigate = useNavigate();
