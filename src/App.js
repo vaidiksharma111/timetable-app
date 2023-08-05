@@ -11,6 +11,7 @@ const App = () => {
       {/* Define the routes */}
       <Routes>
           <Route path="/" element={<Timetable />} />
+          <Route path="/timetable-app" element={<Timetable />} /> 
           <Route path="/tt" element={<ShowTimetable />} />
           <Route path="/tt/:selectedElectives" element={<ShowTimetable />} />
         </Routes>
