@@ -15,7 +15,7 @@ const ShowTimetable = () => {
     // Create the options for the PDF
     const options = {
       margin: 10, // You can adjust margins if needed
-      filename: 'react_page.pdf',
+      filename: 'my_time_table.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
@@ -26,7 +26,7 @@ const ShowTimetable = () => {
   return (
     <>
     <div id='pdfContent'>
-      <h2>Timetable</h2>
+      <h2 className='title1'>Time-Table B.Tech 7th Sem</h2>
       <table className="timetable">
         <thead>
           <tr>
@@ -43,18 +43,12 @@ const ShowTimetable = () => {
               {timeSlots.map((slot, index) => {
                 let courseAbbr = '', type = '', room = '';
                 selectedElectives.forEach((course) => {
-                  if (course.type.L[0] && course.type.L[0].day === day && +course.type.L[0].slot === index + 1) {
-                    courseAbbr = course.abbr + ' (L) ' + course.type.L[0].room;
-                  } else if (course.type.L[1] && course.type.L[1].day === day && +course.type.L[1].slot === index + 1) {
-                    courseAbbr = course.abbr + ' (L) ' + course.type.L[1].room;
-                  } else if (course.type.T[0] && course.type.T[0].day === day && +course.type.T[0].slot === index + 1) {
-                    courseAbbr = course.abbr + ' (T) ' + course.type.T[0].room;
-                  } else if (course.type.T[1] && course.type.T[1].day === day && +course.type.T[1].slot === index + 1) {
-                    courseAbbr = course.abbr + ' (T) ' + course.type.T[1].room;
-                  } else if (course.type.P[0] && course.type.P[0].day === day && +course.type.P[0].slot === index + 1) {
-                    courseAbbr = course.abbr + ' (P) ' + course.type.P[0].room;
-                  } else if (course.type.P[1] && course.type.P[1].day === day && +course.type.P[1].slot === index + 1) {
-                    courseAbbr = course.abbr + ' (P) ' + course.type.P[1].room;
+                  if (course.type.L && course.type.L.day === day && +course.type.L.slot === index + 1) {
+                    courseAbbr = course.abbr + ' (L) ' + course.type.L.room;
+                  } else if (course.type.T && course.type.T.day === day && +course.type.T.slot === index + 1) {
+                    courseAbbr = course.abbr + ' (T) ' + course.type.T.room;
+                  } else if (course.type.P && course.type.P.day === day && +course.type.P.slot === index + 1) {
+                    courseAbbr = course.abbr + ' (P) ' + course.type.P.room;
                   } else if (course.type.PM && course.type.PM.day === day && +course.type.PM.slot === index + 1) {
                     courseAbbr = course.abbr;
                   }
@@ -69,6 +63,7 @@ const ShowTimetable = () => {
           ))}
         </tbody>
       </table>
+      <h2 className='title2'>IIIT Allahabad</h2>
     </div>
     <button onClick={downloadPDF}>Download PDF</button>
     </>
